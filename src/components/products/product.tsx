@@ -1,30 +1,37 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { Product, IpropsProductElement } from "./products.interface";
 import React from 'react'
 
-const ProductElement = ({ product }: IpropsProductElement ) => {
+const ProductElement = ({ product, setModalVisible }: IpropsProductElement ) => {
     const { num, name, description, category, isVegan } = product;
+
+    console.log(setModalVisible);
     return (
-        <View style={styles.item}>
-            <Text style={styles.title}>{num}</Text>
-            <Text style={styles.title}>{name}</Text>
-        </View>
+        <TouchableHighlight
+          onPress={() => {
+            setModalVisible(product);
+          }}>
+            <View style={styles.item}>
+                <Text style={styles.num}>{num}</Text>
+                <Text style={styles.name}>{name}</Text>
+            </View>
+        </TouchableHighlight>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        marginTop: 5,
-    },
     item: {
-        backgroundColor: '#f9c2ff',
-        padding: 20,
+        padding: 10,
         marginVertical: 8,
         marginHorizontal: 16,
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
     },
-    title: {
-        fontSize: 32,
+    num: {
+    },
+    name: {
+        alignItems: 'flex-end'
     },
 });
 

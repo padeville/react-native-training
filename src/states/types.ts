@@ -5,21 +5,25 @@ export type AddProductAction = {
     type: string;
     ProductData: Product;
 }
+
+export type SelectProductAction = {
+    type: string;
+    Product: Product;
+}
 export type UpdateProductAction = {
     type: string;
     index: number;
     ProductData: Product;
 }
+
 export type RemoveProductAction = {
     type: string;
     index: number;
 }
 
-export type ProductListAction = AddProductAction | UpdateProductAction | RemoveProductAction;
+export type ProductListAction = AddProductAction | UpdateProductAction | RemoveProductAction | SelectProductAction;
 
-export type ProductListState = Product[];
-
-export type AppState = {
-    ProductList: ProductListState,
-    // add future state slices here
+export type ProductListState = {
+    products: Product[];
+    selectedProduct: Product;
 }
